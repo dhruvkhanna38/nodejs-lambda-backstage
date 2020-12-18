@@ -6,7 +6,7 @@ metadata:
   description: Create a nodejs hello world lambda function
   tags:
     - experimental
-    - nodejs12.x
+    - nodejs
 spec:
   owner: Stockholm@team.telstra.com
   templater: cookiecutter
@@ -48,10 +48,10 @@ spec:
         title: Runtime
         type: string
         description: Choose runtime for your lambda function 
-        enum: 
-          - nodejs12.x
-          - nodejs10.x
-        default: nodejs12.x
+        enum:
+          - nodejs12
+          - nodejs10
+        default: nodejs12
       description:
         title: Description
         type: string
