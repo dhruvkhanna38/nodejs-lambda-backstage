@@ -1,12 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
-  name: nodejs12.x-lambda-template
+  name: nodejs-lambda-template
   title: Nodejs Lambda Function
   description: Create a nodejs hello world lambda function
   tags:
     - experimental
-    - nodejs
+    - nodejs12.x
 spec:
   owner: Stockholm@team.telstra.com
   templater: cookiecutter
