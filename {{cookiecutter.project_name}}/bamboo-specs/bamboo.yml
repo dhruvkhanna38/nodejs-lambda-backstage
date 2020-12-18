@@ -1,0 +1,146 @@
+---
+version: 2
+plan:
+  project-key: {{cookiecutter.plan_key}}
+  key: {{cookiecutter.bamboo_plan_key}}
+  name: {{cookiecutter.repo_name}}
+stages:
+- Build:
+    manual: false
+    final: false
+    jobs:
+    - Build
+Build:
+  key: BUILD
+  tasks:
+  - checkout:
+      path: {{ cookiecutter.team_name }}-code
+      force-clean-build: 'false'
+  - script:
+      interpreter: BINSH_OR_CMDEXE
+      scripts:
+      - |-
+        #!/bin/bash
+        git_short_sha=`git log --pretty=format:'%h' -n 1`
+        previous_version=`git describe --tags --abbrev=0 --match 'v*.*' | cut -c2-`
+        image_name=${bamboo.CONTAINER_REGISTRY}/${bamboo.ARTIFACT_NAME}:${git_short_sha}
+
+        echo git_short_sha=${git_short_sha} > release-info.properties
+        echo previous_version=${previous_version} >> release-info.properties
+        echo image_name=${image_name} >> release-info.properties
+
+        echo "pulling the required image"
+        docker pull ${bamboo.dockerRepo}/${bamboo.nodeImage}:${bamboo.tagVersion}
+        echo ""
+        echo "running the build"
+        docker run --rm --name ${bamboo.containerName} -v ${bamboo.build.working.directory}/{{ cookiecutter.team_name }}-code:/buildDir -w /buildDir \
+            ${bamboo.dockerRepo}/${bamboo.nodeImage}:${bamboo.tagVersion} \
+            bash -c "echo Installing npm@latest && npm install -g npm@latest && npm install && npm run test && pwd && ls -R && chmod -R 777 . "
+  - inject-variables:
+      file: release-info.properties
+      scope: RESULT
+      namespace: releaseInfo
+# com.atlassian.bamboo.plugins.scripttask:task.builder.script is disabled. This state is not supported at YAML
+  - script:
+      interpreter: SHELL
+      scripts:
+      - |-
+        #!/bin/bash
+        cd {{ cookiecutter.team_name }}-code
+        curl $bamboo_JETPACK_SAAS_INITIATE_TRIGGER | bash
+  - script:
+      interpreter: SHELL
+      scripts:
+      - |-
+        #!/bin/bash
+        cd {{ cookiecutter.team_name }}-code
+        export SCANNER_TO_BREAK_BUILD=Sonarqube
+        curl $bamboo_JETPACK_SAAS_REPORT_BREAKBUILD | bash
+# com.atlassian.bamboo.plugins.scripttask:task.builder.script is disabled. This state is not supported at YAML
+  - inject-variables:
+      file: release-info.properties
+      scope: RESULT
+      namespace: releaseInfo
+# com.atlassian.bamboo.plugins.scripttask:task.builder.script is disabled. This state is not supported at YAML
+# com.atlassian.bamboo.plugins.vcs:task.vcs.push is disabled. This state is not supported at YAML
+  - script:
+      interpreter: SHELL
+      scripts:
+      - |-
+        #!/usr/bin/env bash
+        cd {{ cookiecutter.team_name }}-code
+
+        docker_v2="docker-registry-v2.ae.sda.corp.telstra.com"
+        application_base_image="${docker_v2}/o2a/node-centos:10"
+
+        nexus_token="${bamboo_NEXUS_DEPLOYMENT_TOKEN_PASSWORD}"
+
+        docker run --rm -i \
+        -v $(pwd):/app \
+        -e nexus_token=${nexus_token} \
+        -w /app \
+        ${application_base_image} sh -c " \
+        mv .npmrc ~/.npmrc && \
+        npm config set _auth ${nexus_token} && \
+        npm publish --access=public"
+  artifacts:
+  - name: maven-jar
+    location: target
+    pattern: '*.jar'
+    shared: true
+    required: false
+  - name: release-info
+    pattern: release-info.properties
+    shared: true
+    required: false
+variables:
+  ARTIFACT_NAME: {{cookiecutter.project_name}}
+  CONTAINER_REGISTRY: docker-registry-v2.ae.sda.corp.telstra.com
+  REBUILD_BUILDER: 'false'
+  containerName: aws-lambda-nodejs
+  dockerRepo: docker-registry-v2.ae.sda.corp.telstra.com
+  nodeImage: agb-node-cov-env
+  tagVersion: latest
+triggers:
+- polling: 120
+branches:
+  create: for-pull-request
+  delete:
+    after-deleted-days: 7
+    after-inactive-days: 30
+  link-to-jira: true
+notifications: []
+labels: []
+other:
+  concurrent-build-plugin: system-default
+---
+version: 2
+plan:
+  key: {{cookiecutter.plan_key}}-{{ cookiecutter.bamboo_plan_key }}
+plan-permissions:
+- users:
+  - {{cookiecutter.bamboo_specs_build_user_admin}}
+  - {{cookiecutter.bamboo_specs_build_user_nonadmin}}
+  groups:
+  - {{ cookiecutter.team_name }}-users
+  - {{ cookiecutter.team_name }}-readonly
+  - {{ cookiecutter.team_name }}-admin
+  permissions:
+  - view
+  - edit
+  - build
+  - clone
+  - admin
+- users:
+  - {{cookiecutter.bamboo_specs_deployment_user1}}
+  - {{cookiecutter.bamboo_specs_deployment_user2}}
+  permissions:
+  - view
+  - edit
+  - clone
+- roles:
+  - logged-in
+  - anonymous
+  permissions:
+  - view
+...
