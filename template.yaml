@@ -6,7 +6,7 @@ metadata:
   description: Create a nodejs hello world lambda function
   tags:
     - experimental
-    - nodejs12.x
+    - nodejs
 spec:
   owner: Stockholm@team.telstra.com
   templater: cookiecutter
