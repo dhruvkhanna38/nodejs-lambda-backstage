@@ -106,7 +106,7 @@ spec:
         description: Enter the Unique SonarQube67 Component Key of your Project
       sonarQubeScan:
         title: Sonar Qube Scan
-        type: string
+        type: boolean
         description: Do you want to enable Sonar Qube Scan(Choose True is yes and False if No)
         enum:
           - True
@@ -145,7 +145,7 @@ spec:
         default: Consumer and Small Business (C&SB)
       businessCritical: 
         title: Business Critical Input
-        type: string
+        type: boolean
         description: Choose Business Critical Settings
         enum:
           - True
