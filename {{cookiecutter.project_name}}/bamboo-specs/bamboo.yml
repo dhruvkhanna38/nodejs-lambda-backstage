@@ -116,7 +116,7 @@ other:
 ---
 version: 2
 plan:
-  key: {{cookiecutter.bamboo.plan_key}}-{{ cookiecutter.bamboo.bamboo_plan_key }}
+  key: {{cookiecutter.bamboo.plan_key}}- {{cookiecutter.bamboo.bamboo_plan_key}}
 plan-permissions:
 - users:
   - {{cookiecutter.bamboo.bamboo_specs_build_user_admin}}
