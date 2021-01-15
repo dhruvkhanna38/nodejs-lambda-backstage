@@ -16,8 +16,7 @@ spec:
     required:
       - project_name
       - description
-      - lambda.runtime
-      - lambda.lambda_function_name
+      - lambda
     properties:
       project_name:
         title: Project Directory Name
