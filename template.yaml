@@ -15,12 +15,10 @@ spec:
   schema:
     required:
       - project_name
-      - runtime
       - description
-      - lambda_function_name
-      - create_bamboo_specs
-      - create_sonar_file
-      - create_jetpack_file
+      - lambda:
+          - runtime
+          - lambda_function_name
     properties:
       project_name:
         title: Project Directory Name
