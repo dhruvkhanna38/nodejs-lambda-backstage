@@ -1,9 +1,9 @@
 ---
 version: 2
 plan:
-  project-key: {{cookiecutter.plan_key}}
-  key: {{cookiecutter.bamboo_plan_key}}
-  name: {{cookiecutter.repo_name}}
+  project-key: {{cookiecutter.bamboo.plan_key}}
+  key: {{cookiecutter.bamboo.bamboo_plan_key}}
+  name: {{cookiecutter.bamboo.repo_name}}
 stages:
 - Build:
     manual: false
@@ -14,7 +14,7 @@ Build:
   key: BUILD
   tasks:
   - checkout:
-      path: {{ cookiecutter.team_name }}-code
+      path: {{ cookiecutter.bamboo.team_name }}-code
       force-clean-build: 'false'
   - script:
       interpreter: BINSH_OR_CMDEXE
@@ -46,14 +46,14 @@ Build:
       scripts:
       - |-
         #!/bin/bash
-        cd {{ cookiecutter.team_name }}-code
+        cd {{ cookiecutter.bamboo.team_name }}-code
         curl $bamboo_JETPACK_SAAS_INITIATE_TRIGGER | bash
   - script:
       interpreter: SHELL
       scripts:
       - |-
         #!/bin/bash
-        cd {{ cookiecutter.team_name }}-code
+        cd {{ cookiecutter.bamboo.team_name }}-code
         export SCANNER_TO_BREAK_BUILD=Sonarqube
         curl $bamboo_JETPACK_SAAS_REPORT_BREAKBUILD | bash
 # com.atlassian.bamboo.plugins.scripttask:task.builder.script is disabled. This state is not supported at YAML
@@ -68,7 +68,7 @@ Build:
       scripts:
       - |-
         #!/usr/bin/env bash
-        cd {{ cookiecutter.team_name }}-code
+        cd {{ cookiecutter.bamboo.team_name }}-code
 
         docker_v2="docker-registry-v2.ae.sda.corp.telstra.com"
         application_base_image="${docker_v2}/o2a/node-centos:10"
@@ -116,15 +116,15 @@ other:
 ---
 version: 2
 plan:
-  key: {{cookiecutter.plan_key}}-{{ cookiecutter.bamboo_plan_key }}
+  key: {{cookiecutter.bamboo.plan_key}}-{{ cookiecutter.bamboo.bamboo_plan_key }}
 plan-permissions:
 - users:
-  - {{cookiecutter.bamboo_specs_build_user_admin}}
-  - {{cookiecutter.bamboo_specs_build_user_nonadmin}}
+  - {{cookiecutter.bamboo.bamboo_specs_build_user_admin}}
+  - {{cookiecutter.bamboo.bamboo_specs_build_user_nonadmin}}
   groups:
-  - {{ cookiecutter.team_name }}-users
-  - {{ cookiecutter.team_name }}-readonly
-  - {{ cookiecutter.team_name }}-admin
+  - {{ cookiecutter.bamboo.team_name }}-users
+  - {{ cookiecutter.bamboo.team_name }}-readonly
+  - {{ cookiecutter.bamboo.team_name }}-admin
   permissions:
   - view
   - edit
@@ -132,8 +132,8 @@ plan-permissions:
   - clone
   - admin
 - users:
-  - {{cookiecutter.bamboo_specs_deployment_user1}}
-  - {{cookiecutter.bamboo_specs_deployment_user2}}
+  - {{cookiecutter.bamboo.bamboo_specs_deployment_user1}}
+  - {{cookiecutter.bamboo.bamboo_specs_deployment_user2}}
   permissions:
   - view
   - edit

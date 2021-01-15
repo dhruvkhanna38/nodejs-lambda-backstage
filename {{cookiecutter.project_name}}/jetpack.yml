@@ -1,6 +1,6 @@
 survey:
   ApplicationAccessibleOverInternet:
-    answer: {{cookiecutter.serviceAccess}}
+    answer: {{cookiecutter.jetpack.serviceAccess}}
     profile: NA
   ApplicationDescription:
     answer: {{cookiecutter.description}}
@@ -9,13 +9,13 @@ survey:
     answer: {{cookiecutter.project_name}}
     profile: NA
   BAU:
-    answer: {{cookiecutter.businessUnit}}
+    answer: {{cookiecutter.jetpack.businessUnit}}
     profile: NA
   BusinessCritical:
-    answer: {{cookiecutter.businessCritical}}
+    answer: {{cookiecutter.jetpack.businessCritical}}
     profile: NA
   BusinessRiskConsequence:
-    answer: {{cookiecutter.businessRisk}}
+    answer: {{cookiecutter.jetpack.businessRisk}}
     profile: STANDARD
   ClairScanner:
     answer: False
@@ -30,7 +30,7 @@ survey:
     answer: True
     profile: NA
   InformationClassification:
-    answer: {{cookiecutter.informationClassification}}
+    answer: {{cookiecutter.jetpack.informationClassification}}
     profile: NA
   LegacySystems:
     answer: False
@@ -39,25 +39,25 @@ survey:
     answer: {{cookiecutter.project_name}}
     profile: NA
   SonarQubeScanner:
-    answer: {{cookiecutter.sonarQubeScan}}
+    answer: {{cookiecutter.jetpack.sonarQubeScan}}
     profile: NA
   SourceClear:
     answer: False
     profile: NA
   TargetPlatform:
-    answer: {{cookiecutter.targetPlatform}}
+    answer: {{cookiecutter.jetpack.targetPlatform}}
     profile: NA
   TeamGroupEmail:
-    answer: {{cookiecutter.teamGroupEmail}}
+    answer: {{cookiecutter.jetpack.teamGroupEmail}}
     profile: NA
   TeamLeadEmail:
-    answer: {{cookiecutter.teamLeadEmail}}
+    answer: {{cookiecutter.jetpack.teamLeadEmail}}
     profile: NA
   TeamName:
-    answer: {{cookiecutter.team_name}}
+    answer: {{cookiecutter.bamboo.team_name}}
     profile: NA
   TelstraRetailOrWholesaleUse:
-    answer: {{cookiecutter.telstraType}}
+    answer: {{cookiecutter.jetpack.telstraType}}
     profile: NA
   UsesDockerImages:
     answer: False

@@ -17,188 +17,216 @@ spec:
       - project_name
       - runtime
       - description
-      - team_name
       - lambda_function_name
-      - plan_key
-      - bamboo_plan_key
-      - repo_name
-      - bamboo_specs_build_user_admin
-      - bamboo_specs_build_user_nonadmin
-      - bamboo_specs_deployment_user1
-      - bamboo_specs_deployment_user2
-      - sonar_login
-      - sonar_project_component_key
-      - sonarQubeScan
-      - serviceAccess
-      - businessUnit
-      - businessCritical
-      - businessRisk
-      - informationClassification
-      - targetPlatform
-      - teamGroupEmail
-      - teamLeadEmail
-      - telstraType
+      - create_bamboo_specs
+      - create_sonar_file
+      - create_jetpack_file
     properties:
       project_name:
         title: Project Directory Name
         type: string
         description: Name of your project directory
         default: nodejs-lambda
-      runtime:
-        title: Runtime
-        type: string
-        description: Choose runtime for your lambda function 
-        enum:
-          - nodejs12
-          - nodejs10
-        default: nodejs12
+
       description:
         title: Description
         type: string
         description: Description of the component
         default: NodeJS template for lambda deployment
-      team_name:
-        title: Team Name
-        type: string
-        description: Enter Your Team Name
-        default: Stockholm
-      lambda_function_name:
-        title: Lambda Function Name
-        type: string
-        description: Enter a Name for your Lambda Function
-        default: lambda1
-      plan_key:
-        title: Bamboo Project Key 
-        type: string
-        description: Bamboo project key (try use your existing project e.g. STOC)
-        default: STOC
-      bamboo_plan_key:
-        title: Bamboo Build Plan Key
-        type: string
-        description: Bamboo build plan key (e.g. MYSERVICEV2)
-      repo_name:
-        title: Repository Name
-        type: string
-        description: Enter a name for your Repository
-      bamboo_specs_build_user_admin:
-        title: Admin for build project created in bamboo
-        type: string
-        description: Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
-      bamboo_specs_build_user_nonadmin:
-        title: Non Admin for build project created in bamboo
-        type: string
-        description: Non Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
-      bamboo_specs_deployment_user1:
-        title: Build plan deployment User 1
-        type: string
-        description: User1 ID for Deployment Plan(Ex. d123456/h123456 ID)
-      bamboo_specs_deployment_user2:
-        title: Build plan deployment User 2
-        type: string
-        description: User2 ID for Deployment Plan(Ex. d123456/h123456 ID)
-      sonar_login:
-        title: Login Token for SonarQube67
-        type: string
-        description: Enter Login Token for Your SonarQube67 Account
-      sonar_project_component_key:
-        title: Component key of your SonarQube67 Project
-        type: string
-        description: Enter the Unique SonarQube67 Component Key of your Project
-      sonarQubeScan:
-        title: Sonar Qube Scan
-        type: boolean
-        description: Do you want to enable Sonar Qube Scan(Choose True is yes and False if No)
-        enum:
-          - True
-          - False
-        default: True
-      serviceAccess:
-        title: Service Access 
-        type: string
-        description: Enter Service Access Permissions
-        enum:
-          - Public/Internet
-          - Private/EDN
-        default: Private/EDN
-      businessUnit: 
-        title: Business Unit
-        type: string
-        description: Enter Business Unit
-        enum: 
-          - Belong
-          - Consumer and Small Business (C&SB)
-          - Corporate Affairs 
-          - Credit Management
-          - Chief Risk Office Privacy (CRO)
-          - Finance & Strategy (F&S) 
-          - Global Contact Centres  
-          - Global Enterprise Services 
-          - Health', 'Human Resources 
-          - Media & Marketing
-          - Products (includes NBN)
-          - Telstra Country Wide (TCW)
-          - Telstra Digital
-          - Telstra International
-          - Telstra Operations
-          - Telstra Wholesale
-          - Technology Innovation & Strategy (TI&S)
-        default: Consumer and Small Business (C&SB)
-      businessCritical: 
-        title: Business Critical Input
-        type: boolean
-        description: Choose Business Critical Settings
-        enum:
-          - True
-          - False
-        default: True
-      businessRisk: 
-        title: Business Risk Input
-        type: string
-        description: Choose Business Risk Specification
-        enum:
-          - Extreme
-          - Severe
-          - Major
-          - Moderate
-          - Minor
-        default: Major
-      informationClassification:
-        title: Information Classification Input
-        type: string
-        description: Choose Information Classification Specification
-        enum:
-          - Restricted 
-          - Confidential
-          - Internal
-          - Unrestricted
-        default: Restricted
-      targetPlatform: 
-        title: Target Platform Input
-        type: string
-        description: Choose Target Platform
-        enum: 
-          - PCF
-          - AMP Rancher
-          - AMP Naked
-          - Other
-        default: AMP Naked
-      teamGroupEmail:
-        title: Team Group Email
-        type: string
-        description: Enter Team Group Email
-        default: Stockholm@team.telstra.com
-      teamLeadEmail:
-        title: Team Lead Email
-        type: string
-        description: Enter Team Lead Email
-        default: sharad.pattanshetti@team.telstra.com
-      telstraType:
-        title: Telstra type
-        type: string
-        description: Enter Telstra type
-        enum:
-          - Wholesale
-          - Retail
-          - Both
-        default: Both
+
+      lambda:
+        title: Lambda Function Inputs
+        type: object
+        properties:
+          lambda_function_name:
+            title: Lambda Function Name
+            type: string
+            description: Enter a Name for your Lambda Function
+            default: lambda1
+          runtime:
+            title: Runtime
+            type: string
+            description: Choose runtime for your lambda function 
+            enum:
+              - nodejs12
+              - nodejs10
+            default: nodejs12
+
+      bamboo:
+        title: Bamboo Specs
+        type: object
+        properties:
+          create_bamboo_specs:
+            title: Create Bamboo Specs
+            type: boolean
+            description: Please select if you want to create bamboo-specs or not?
+            enum:
+              - True
+              - False
+            default: True
+          team_name:
+            title: Team Name
+            type: string
+            description: Enter Your Team Name
+            default: Stockholm
+          plan_key:
+            title: Bamboo Project Key 
+            type: string
+            description: Bamboo project key (try use your existing project e.g. STOC)
+            default: STOC
+          bamboo_plan_key:
+            title: Bamboo Build Plan Key
+            type: string
+            description: Bamboo build plan key (e.g. MYSERVICEV2)
+          repo_name:
+            title: Repository Name
+            type: string
+            description: Enter a name for your Repository
+          bamboo_specs_build_user_admin:
+            title: Admin for build project created in bamboo
+            type: string
+            description: Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
+          bamboo_specs_build_user_nonadmin:
+            title: Non Admin for build project created in bamboo
+            type: string
+            description: Non Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
+          bamboo_specs_deployment_user1:
+            title: Build plan deployment User 1
+            type: string
+            description: User1 ID for Deployment Plan(Ex. d123456/h123456 ID)
+          bamboo_specs_deployment_user2:
+            title: Build plan deployment User 2
+            type: string
+            description: User2 ID for Deployment Plan(Ex. d123456/h123456 ID)    
+      
+      sonar: 
+        title: SonarQube Properties
+        type: object
+        properties: 
+          create_sonar_file:
+            title: Create SonarQube File
+            type: boolean
+            description: Please select if you want to create sonar-project.properties or not?
+            enum:
+              - True
+              - False
+            default: True
+          sonar_login:
+            title: Login Token for SonarQube67
+            type: string
+            description: Enter Login Token for Your SonarQube67 Account
+          sonar_project_component_key:
+            title: Component key of your SonarQube67 Project
+            type: string
+            description: Enter the Unique SonarQube67 Component Key of your Project
+          
+      jetpack: 
+        title: Jetpack Properties
+        type: object
+        properties:
+            create_jetpack_file:
+              title: Create Jetpack File
+              type: boolean
+              description: Please select if you want to create jetpack.yaml or not? 
+              enum:
+                - True
+                - False
+              default: True
+            sonarQubeScan:
+              title: Sonar Qube Scan
+              type: boolean
+              description: Do you want to enable Sonar Qube Scan(Choose True is yes and False if No)
+              enum:
+                - True
+                - False
+              default: True
+            serviceAccess:
+              title: Service Access 
+              type: string
+              description: Enter Service Access Permissions
+              enum:
+                - Public/Internet
+                - Private/EDN
+              default: Private/EDN
+            businessUnit: 
+              title: Business Unit
+              type: string
+              description: Enter Business Unit
+              enum: 
+                - Belong
+                - Consumer and Small Business (C&SB)
+                - Corporate Affairs 
+                - Credit Management
+                - Chief Risk Office Privacy (CRO)
+                - Finance & Strategy (F&S) 
+                - Global Contact Centres  
+                - Global Enterprise Services 
+                - Health', 'Human Resources 
+                - Media & Marketing
+                - Products (includes NBN)
+                - Telstra Country Wide (TCW)
+                - Telstra Digital
+                - Telstra International
+                - Telstra Operations
+                - Telstra Wholesale
+                - Technology Innovation & Strategy (TI&S)
+              default: Consumer and Small Business (C&SB)
+            businessCritical: 
+              title: Business Critical Input
+              type: boolean
+              description: Choose Business Critical Settings
+              enum:
+                - True
+                - False
+              default: True
+            businessRisk: 
+              title: Business Risk Input
+              type: string
+              description: Choose Business Risk Specification
+              enum:
+                - Extreme
+                - Severe
+                - Major
+                - Moderate
+                - Minor
+              default: Major
+            informationClassification:
+              title: Information Classification Input
+              type: string
+              description: Choose Information Classification Specification
+              enum:
+                - Restricted 
+                - Confidential
+                - Internal
+                - Unrestricted
+              default: Restricted
+            targetPlatform: 
+              title: Target Platform Input
+              type: string
+              description: Choose Target Platform
+              enum: 
+                - PCF
+                - AMP Rancher
+                - AMP Naked
+                - Other
+              default: AMP Naked
+            teamGroupEmail:
+              title: Team Group Email
+              type: string
+              description: Enter Team Group Email
+              default: Stockholm@team.telstra.com
+            teamLeadEmail:
+              title: Team Lead Email
+              type: string
+              description: Enter Team Lead Email
+              default: sharad.pattanshetti@team.telstra.com
+            telstraType:
+              title: Telstra type
+              type: string
+              description: Enter Telstra type
+              enum:
+                - Wholesale
+                - Retail
+                - Both
+              default: Both
 

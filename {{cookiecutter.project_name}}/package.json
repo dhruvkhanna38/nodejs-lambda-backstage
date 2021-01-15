@@ -23,7 +23,7 @@
     "push":"node utils/push.js"
   },
   "keywords": [],
-  "author": "{{cookiecutter.team_name}}",
+  "author": "{{cookiecutter.bamboo.team_name}}",
   "license": "ISC",
   "private": true,
   "dependencies": {
