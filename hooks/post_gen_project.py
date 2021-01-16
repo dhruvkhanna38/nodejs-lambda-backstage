@@ -15,8 +15,8 @@ if __name__ == '__main__':
 	if '{{ cookiecutter.bamboo.create_bamboo_specs }}' != 'True':
             remove_dir('bamboo-specs')
 
-    if '{{ cookiecutter.sonar.create_sonar_file }}' != 'True':
+    	if '{{ cookiecutter.sonar.create_sonar_file }}' != 'True':
             remove_file('sonar-project.properties')
 
-    if '{{ cookiecutter.jetpack.create_jetpack_file }}' != 'True':
+    	if '{{ cookiecutter.jetpack.create_jetpack_file }}' != 'True':
             remove_file('jetpack.yml')
