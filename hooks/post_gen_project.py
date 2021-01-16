@@ -12,7 +12,6 @@ def remove_file(filePath):
     os.remove(os.path.join(PROJECT_DIRECTORY, filePath))
 
 if __name__ == '__main__':
-    
 	if '{{ cookiecutter.bamboo.create_bamboo_specs }}' != 'True':
 	        remove_dir('bamboo-specs')
 
