@@ -74,26 +74,32 @@ spec:
             title: Bamboo Build Plan Key
             type: string
             description: Bamboo build plan key (e.g. MYSERVICEV2)
+            default: "bamboo_plan_key"
           repo_name:
             title: Repository Name
             type: string
             description: Enter a name for your Repository
+            default: "repo_name"
           bamboo_specs_build_user_admin:
             title: Admin for build project created in bamboo
             type: string
             description: Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
+            default: "d123456"
           bamboo_specs_build_user_nonadmin:
             title: Non Admin for build project created in bamboo
             type: string
             description: Non Admin User ID for the Build Plan(Ex. d123456/h123456 ID)
+            default: "d123456"
           bamboo_specs_deployment_user1:
             title: Build plan deployment User 1
             type: string
             description: User1 ID for Deployment Plan(Ex. d123456/h123456 ID)
+            default: "d123456"
           bamboo_specs_deployment_user2:
             title: Build plan deployment User 2
             type: string
-            description: User2 ID for Deployment Plan(Ex. d123456/h123456 ID)    
+            description: User2 ID for Deployment Plan(Ex. d123456/h123456 ID) 
+            default: "d123456"   
       
       sonar: 
         title: SonarQube Properties
@@ -111,10 +117,12 @@ spec:
             title: Login Token for SonarQube67
             type: string
             description: Enter Login Token for Your SonarQube67 Account
+            default: "sonar_login_token"
           sonar_project_component_key:
             title: Component key of your SonarQube67 Project
             type: string
             description: Enter the Unique SonarQube67 Component Key of your Project
+            default: "sonar_project_component_key"
           
       jetpack: 
         title: Jetpack Properties
