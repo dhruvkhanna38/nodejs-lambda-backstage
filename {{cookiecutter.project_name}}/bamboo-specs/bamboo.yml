@@ -33,7 +33,7 @@ Build:
         docker pull ${bamboo.dockerRepo}/${bamboo.nodeImage}:${bamboo.tagVersion}
         echo ""
         echo "running the build"
-        docker run --rm --name ${bamboo.containerName} -v ${bamboo.build.working.directory}/{{ cookiecutter.team_name }}-code:/buildDir -w /buildDir \
+        docker run --rm --name ${bamboo.containerName} -v ${bamboo.build.working.directory}/{{ cookiecutter.bamboo.team_name }}-code:/buildDir -w /buildDir \
             ${bamboo.dockerRepo}/${bamboo.nodeImage}:${bamboo.tagVersion} \
             bash -c "echo Installing npm@latest && npm install -g npm@latest && npm install && npm run test && pwd && ls -R && chmod -R 777 . "
   - inject-variables:

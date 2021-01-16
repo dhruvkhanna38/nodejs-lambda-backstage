@@ -23,7 +23,7 @@ spec:
         type: string
         description: Name of your project directory
         default: nodejs-lambda
-
+      
       description:
         title: Description
         type: string
