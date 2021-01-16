@@ -5,5 +5,5 @@
     "lambda.lambda_function_name":"lambda1",
     "bamboo.create_bamboo_specs":["True", "False"],
     "sonar.create_sonar_file":["True", "False"],
-    "jetpack.create_jetpack_file": ["True", "False"],
+    "jetpack.create_jetpack_file": ["True", "False"]
 }
