@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
   name: nodejs-lambda-template
-  title: Nodejs Lambda Function
+  title: Create a nodejs lambda function using this template
   description: Create a nodejs hello world lambda function
   tags:
     - experimental
@@ -16,9 +16,8 @@ spec:
     required:
       - project_name
       - description
-      - lambda
-        - lambda_function_name
-        - runtime
+      - lambda.lambda_function_name
+      - lambda.runtime
     properties:
       project_name:
         title: Project Directory Name
@@ -37,7 +36,7 @@ spec:
         type: object
         properties:
           lambda_function_name:
-            title: Lambda Function Name
+            title: Function Name
             type: string
             description: Enter a Name for your Lambda Function
             default: lambda1
