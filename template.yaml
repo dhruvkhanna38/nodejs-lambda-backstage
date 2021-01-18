@@ -32,21 +32,25 @@ spec:
 
       lambda:
         title: Lambda Function Inputs
-        type: array
-        properties:
-          lambda_function_name:
-            title: Function Name
-            type: string
-            description: Enter a Name for your Lambda Function
-            default: lambda1
-          runtime:
-            title: Runtime
-            type: string
-            description: Choose runtime for your lambda function 
-            enum:
-              - nodejs12
-              - nodejs10
-            default: nodejs12
+        type: object
+        schema:
+          required:
+            - lambda_function_name
+            - runtime
+          properties:
+            lambda_function_name:
+              title: Function Name
+              type: string
+              description: Enter a Name for your Lambda Function
+              default: lambda1
+            runtime:
+              title: Runtime
+              type: string
+              description: Choose runtime for your lambda function 
+              enum:
+                - nodejs12
+                - nodejs10
+              default: nodejs12
 
       bamboo:
         title: Bamboo Specs
