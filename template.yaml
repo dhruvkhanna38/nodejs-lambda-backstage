@@ -33,6 +33,7 @@ spec:
 
       lambda:
         title: Lambda Function Inputs
+        type: object
       
       lambda_function_name:
         title: Function Name
