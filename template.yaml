@@ -16,8 +16,6 @@ spec:
     required:
       - project_name
       - description
-      - lambda.properties.lambda_function_name
-      - lambda.properties.runtime 
     properties:
       project_name:
         title: Project Directory Name
@@ -34,6 +32,9 @@ spec:
       lambda:
         title: Lambda Function Inputs
         type: object
+        required:
+          - lambda_function_name
+          - runtime
         properties:
           lambda_function_name:
             title: Function Name
