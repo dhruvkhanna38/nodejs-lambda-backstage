@@ -1,8 +1,6 @@
 {   
     "project_name": "nodejs-lambda",
     "description":"NodeJS template for lambda deployment",
-    "runtime":["nodejs12.x", "nodejs10.x"],
-    "lambda_function_name":"lambda1",
     "bamboo.create_bamboo_specs":["True", "False"],
     "sonar.create_sonar_file":["True", "False"],
     "jetpack.create_jetpack_file": ["True", "False"]
