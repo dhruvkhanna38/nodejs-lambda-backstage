@@ -35,13 +35,11 @@ spec:
         type: object
         properties:
           lambda_function_name:
-            required: True
             title: Function Name
             type: string
             description: Enter a Name for your Lambda Function
             default: lambda1
           runtime:
-            required: True
             title: Runtime
             type: string
             description: Choose runtime for your lambda function 
