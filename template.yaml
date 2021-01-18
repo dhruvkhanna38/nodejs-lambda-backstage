@@ -16,6 +16,7 @@ spec:
     required:
       - project_name
       - description
+      - lambda
     properties:
       project_name:
         title: Project Directory Name
