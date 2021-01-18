@@ -32,7 +32,7 @@ spec:
 
       lambda:
         title: Lambda Function Inputs
-        type: object
+        type: service
         properties:
           lambda_function_name:
             title: Function Name
