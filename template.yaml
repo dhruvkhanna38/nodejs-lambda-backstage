@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
   name: nodejs-lambda-template
-  title: Nodejs Lambda Function
+  title: Create a nodejs lambda function using this template
   description: Create a nodejs hello world lambda function
   tags:
     - experimental
@@ -16,7 +16,8 @@ spec:
     required:
       - project_name
       - description
-      - lambda
+      - lambda_function_name
+      - runtime
     properties:
       project_name:
         title: Project Directory Name
@@ -32,25 +33,21 @@ spec:
 
       lambda:
         title: Lambda Function Inputs
-        type: object
-        schema:
-          required:
-            - lambda_function_name
-            - runtime
-          properties:
-            lambda_function_name:
-              title: Function Name
-              type: string
-              description: Enter a Name for your Lambda Function
-              default: lambda1
-            runtime:
-              title: Runtime
-              type: string
-              description: Choose runtime for your lambda function 
-              enum:
-                - nodejs12
-                - nodejs10
-              default: nodejs12
+      
+      lambda_function_name:
+        title: Function Name
+        type: string
+        description: Enter a Name for your Lambda Function
+        default: lambda1
+      
+      runtime:
+        title: Runtime
+        type: string
+        description: Choose runtime for your lambda function 
+        enum:
+          - nodejs12
+          - nodejs10
+        default: nodejs12      
 
       bamboo:
         title: Bamboo Specs
