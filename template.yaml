@@ -101,7 +101,9 @@ spec:
             title: Build plan deployment User 2
             type: string
             description: User2 ID for Deployment Plan(Ex. d123456/h123456 ID) 
-            default: "d123456"   
+            default: "d123456"  
+        required:
+        - team_name 
       
       sonar: 
         title: SonarQube Properties
