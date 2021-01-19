@@ -13,9 +13,6 @@ spec:
   type: service
   path: "."
   schema:
-    required:
-      - project_name
-      - description
     properties:
       general:
         title: Project Setup
@@ -128,7 +125,7 @@ spec:
             default: "sonar_project_component_key"
         required:
         - sonar_project_component_key
-        
+
       bamboo:
         title: Bamboo Specs
         type: object
