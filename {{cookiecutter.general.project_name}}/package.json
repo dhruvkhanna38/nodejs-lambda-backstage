@@ -1,7 +1,7 @@
 {
-  "name": "{{ cookiecutter.project_name }}",
+  "name": "{{ cookiecutter.general.project_name }}",
   "version": "0.0.1",
-  "description": "{{cookiecutter.description}}",
+  "description": "{{cookiecutter.general.description}}",
   "main": "index.js",
   "files": [
     ".npmrc"
@@ -23,7 +23,7 @@
     "push":"node utils/push.js"
   },
   "keywords": [],
-  "author": "{{cookiecutter.bamboo.team_name}}",
+  "author": "{{cookiecutter.organization.team_name}}",
   "license": "ISC",
   "private": true,
   "dependencies": {

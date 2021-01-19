@@ -1,21 +1,21 @@
 survey:
   ApplicationAccessibleOverInternet:
-    answer: {{cookiecutter.jetpack.serviceAccess}}
+    answer: Private/EDN
     profile: NA
   ApplicationDescription:
-    answer: {{cookiecutter.description}}
+    answer: {{cookiecutter.general.description}}
     profile: NA
   ApplicationName:
-    answer: {{cookiecutter.project_name}}
+    answer: {{cookiecutter.general.project_name}}
     profile: NA
   BAU:
-    answer: {{cookiecutter.jetpack.businessUnit}}
+    answer: {{cookiecutter.organization.business_unit}}
     profile: NA
   BusinessCritical:
-    answer: {{cookiecutter.jetpack.businessCritical}}
+    answer: True
     profile: NA
   BusinessRiskConsequence:
-    answer: {{cookiecutter.jetpack.businessRisk}}
+    answer: Major
     profile: STANDARD
   ClairScanner:
     answer: False
@@ -30,34 +30,34 @@ survey:
     answer: True
     profile: NA
   InformationClassification:
-    answer: {{cookiecutter.jetpack.informationClassification}}
+    answer: Restricted
     profile: NA
   LegacySystems:
     answer: False
     profile: NA
   ProjectName:
-    answer: {{cookiecutter.project_name}}
+    answer: {{cookiecutter.general.project_name}}
     profile: NA
   SonarQubeScanner:
-    answer: {{cookiecutter.jetpack.sonarQubeScan}}
+    answer: True
     profile: NA
   SourceClear:
     answer: False
     profile: NA
   TargetPlatform:
-    answer: {{cookiecutter.jetpack.targetPlatform}}
+    answer: AMP Naked
     profile: NA
   TeamGroupEmail:
-    answer: {{cookiecutter.jetpack.teamGroupEmail}}
+    answer: Stockholm@team.telstra.com
     profile: NA
   TeamLeadEmail:
-    answer: {{cookiecutter.jetpack.teamLeadEmail}}
+    answer: sharad.pattanshetti@team.telstra.com
     profile: NA
   TeamName:
-    answer: {{cookiecutter.bamboo.team_name}}
+    answer: {{cookiecutter.organization.team_name}}
     profile: NA
   TelstraRetailOrWholesaleUse:
-    answer: {{cookiecutter.jetpack.telstraType}}
+    answer: Both
     profile: NA
   UsesDockerImages:
     answer: False
