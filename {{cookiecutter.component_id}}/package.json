@@ -1,7 +1,7 @@
 {
-  "name": "{{ cookiecutter.general.project_name }}",
+  "name": "{{ cookiecutter.component_id }}",
   "version": "0.0.1",
-  "description": "{{cookiecutter.general.description}}",
+  "description": "{{cookiecutter.description}}",
   "main": "index.js",
   "files": [
     ".npmrc"

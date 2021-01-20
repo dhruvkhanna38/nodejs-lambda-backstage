@@ -3,10 +3,10 @@ survey:
     answer: Private/EDN
     profile: NA
   ApplicationDescription:
-    answer: {{cookiecutter.general.description}}
+    answer: {{cookiecutter.description}}
     profile: NA
   ApplicationName:
-    answer: {{cookiecutter.general.project_name}}
+    answer: {{cookiecutter.component_id}}
     profile: NA
   BAU:
     answer: {{cookiecutter.organization.business_unit}}
@@ -36,7 +36,7 @@ survey:
     answer: False
     profile: NA
   ProjectName:
-    answer: {{cookiecutter.general.project_name}}
+    answer: {{cookiecutter.component_id}}
     profile: NA
   SonarQubeScanner:
     answer: True

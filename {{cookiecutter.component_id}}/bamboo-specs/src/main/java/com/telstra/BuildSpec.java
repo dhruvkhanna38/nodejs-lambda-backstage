@@ -31,11 +31,11 @@ public class PlanSpec {
                 .oid(new BambooOid(""))
                 .key(new BambooKey("{{cookiecutter.bamboo.project_key}}"))
                 .name("{{cookiecutter.organization.team_name}}")
-                .description("description"),
-            "{{cookiecutter.general.repo_name}}",
+                .description("{{cookiecutter.description}}"),
+            "{{cookiecutter.component_id}}",
             new BambooKey("{{cookiecutter.bamboo.bamboo_plan_key}}"))
             .oid(new BambooOid(""))
-            .description("description")
+            .description("{{cookiecutter.description}}")
             .pluginConfigurations(new ConcurrentBuilds())
             .stages(new Stage("Build")
                     .jobs(new Job("Build Plan",
@@ -73,7 +73,7 @@ public class PlanSpec {
                                 new ScriptTask()
                                     .description("Publish to Nexus Repo")
                                     .inlineBody("#!/usr/bin/env bash\ndocker_v2=\"docker-registry-v2.ae.sda.corp.telstra.com\"\napplication_base_image=\"${docker_v2}/o2a/node-centos:10\"\necho ${bamboo_NEXUS_DEPLOYMENT_TOKEN_PASSWORD}\nnexus_token=\"${bamboo_NEXUS_DEPLOYMENT_TOKEN_PASSWORD}\"\n\ndocker run --rm -i \\\n-v $(pwd):/app \\\n-e nexus_token=${nexus_token} \\\n-w /app \\\n${application_base_image} sh -c \" \\\nmv .npmrc ~/.npmrc && \\\nnpm config set _auth ${nexus_token} && \\\nnpm publish --access=public\""))))
-            .linkedRepositories("{{cookiecutter.general.repo_name}}")
+            .linkedRepositories("{{cookiecutter.component_id}}")
             
             .triggers(new RepositoryPollingTrigger()
                     .withPollingPeriod(Duration.ofSeconds(120)))

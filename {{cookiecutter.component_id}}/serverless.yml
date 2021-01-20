@@ -1,5 +1,5 @@
 frameworkVersion: "=2.3.0"
-service: {{cookiecutter.general.project_name}}
+service: {{cookiecutter.component_id}}
 plugins:
   - serverless-webpack
   - serverless-prune-versions

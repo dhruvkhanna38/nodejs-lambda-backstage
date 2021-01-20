@@ -7,56 +7,30 @@ metadata:
   tags:
     - experimental
     - nodejs
+    - serverless
+    - aws-lambda
 spec:
   owner: Stockholm@team.telstra.com
   templater: cookiecutter
   type: service
   path: "."
   schema:
+    required:
+      - component_id
+      - description
+
     properties:
-      general:
-        title: Project Setup
-        type: object
-        properties:
-          project_name:
-            title: Project Directory Name
-            type: string
-            description: Name of your project directory
-            default: nodejs-lambda
+      component_id:
+        title: Name
+        type: string
+        description: Unique name of the component 
 
-          description:
-            title: Description
-            type: string
-            description: Description of the component
-            default: NodeJS template for lambda deployment
-
-          repo_name:
-            title: Repository Name
-            type: string
-            description: Enter a name for your Repository
-            default: repo_name
+      description:
+        title: Description
+        type: string
+        description: Description of the component
+        default: NodeJS template for lambda deployment
           
-          domain:
-            title: Domain
-            type: string
-            oneOf:
-              - const: p2o
-                title: Prospect to Order
-              - const: o2a
-                title: Order to Activate
-              - const: u2c
-                title: Usage to Cash
-              - const: services
-                title: Services
-              - const: r2r
-                title: Request to Resolve
-            description: Business Domain groups a collection of systems that shares same terminology, domain-model, business-purpose, etc
-        required:
-        - project_name
-        - description
-        - repo_name
-        - domain
-      
       organization:
         title: Organization Details
         type: object
@@ -80,15 +54,32 @@ spec:
               - const: sf
                 title: Strategy and Finance
             description: Business Unit
-        
+
+          domain:
+            title: Domain
+            type: string
+            oneOf:
+              - const: p2o
+                title: Prospect to Order
+              - const: o2a
+                title: Order to Activate
+              - const: u2c
+                title: Usage to Cash
+              - const: services
+                title: Services
+              - const: r2r
+                title: Request to Resolve
+            description: Business Domain groups a collection of systems that shares same terminology, domain-model, business-purpose, etc
+
           team_name:
             title: Team Name
             type: string
             description: Enter Your Team Name
             default: Stockholm
-            
+
         required:
         - business_unit
+        - domain
         - team_name
 
       lambda:
@@ -112,20 +103,7 @@ spec:
         required:
         - lambda_function_name
         - runtime
-
-
-      sonar: 
-        title: SonarQube Properties
-        type: object
-        properties: 
-          sonar_project_component_key:
-            title: Component key of your SonarQube67 Project
-            type: string
-            description: Enter the Unique SonarQube67 Component Key of your Project
-            default: "sonar_project_component_key"
-        required:
-        - sonar_project_component_key
-
+      
       bamboo:
         title: Bamboo Specs
         type: object
