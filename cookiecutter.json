@@ -1,4 +1,19 @@
 {   
-    "storePath":"dhruvkhanna38/ok",
-    "owner":"dhruv.khanna@team.telstra.com"
+    "storePath":"BITBUCKET_PROJECT_KEY/REPO_NAME",
+    "owner":"OWNER_EMAIL_ID",
+    "component_id":"nodejs-lambda-project",
+    "description":"ENTER_DESCRIPTION",
+    "organization":{
+        "business_unit":"ENTER_BUSINESS_UNIT (eg cnsb, te)",
+        "domain":"ENTER_DOMAIN (eg p2o, o2a)",
+        "team_name":"ENTER_TEAM_NAME (eg Stockholm)"
+    },
+    "lambda":{
+        "lambda_function_name":"ENTER_LAMBDA_FUNCTION_NAME (eg lambda1)",
+        "runtime":"ENTER_RUNTIME (eg nodejs10, nodejs12)"
+    },
+    "bamboo":{
+        "project_key":"ENTER_BAMBOO_PROJECT_KEY (eg STOC)",
+        "bamboo_plan_key":"ENTER_BAMBOO_PLAN_KEY (eg STOC123)"
+    }
 }
