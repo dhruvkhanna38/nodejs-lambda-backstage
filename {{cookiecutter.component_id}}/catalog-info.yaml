@@ -5,6 +5,7 @@ metadata:
   description: {{cookiecutter.description}}
   annotations: 
     github.com/project-slug: {{cookiecutter.storePath}}
+    backstage.io/techdocs-ref: bitbucket:https://bitbucket.tools.telstra.com/{{cookiecutter.storePath}}
 spec:
   type: service
   lifecycle: experimental
