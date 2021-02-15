@@ -1,27 +1,22 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true,
-        "jest/globals": true
+      "node": true,
+      "commonjs": true,
+      "es6": true
     },
-    "plugins": ["jest"],
     "extends": [
-        "standard", "plugin:jest/all"  
+      "eslint:recommended",
+      "plugin:prettier/recommended"
     ],
-    "parserOptions": {
-        "ecmaVersion": 12
-    },
-    "rules": {
-        "jest/no-disabled-tests": "warn",
-        "jest/no-focused-tests": "error",
-        "jest/no-identical-title": "error",
-        "jest/prefer-to-have-length": "warn",
-        "jest/valid-expect": "error"
-    },
-    "settings": {
-        "jest": {
-          "version": 26
+    "overrides": [
+      {
+        "files": [
+          "**/tests/**/*.spec.(js|jsx|ts|tsx)",
+          "**/__tests__/*.(js|jsx|ts|tsx)"
+        ],
+        "env": {
+          "jest": true
         }
-    }
+      }
+    ]
 }

@@ -1,0 +1,13 @@
+project:
+  key: "{{cookiecutter.bamboo.project_key}}"
+  plan:
+    key: "{{cookiecutter.bamboo.bamboo_plan_key}}"
+    name: "{{cookiecutter.component_id}}"
+stages:
+  - jobs:
+      - scripts:
+          - "#!/bin/bash"
+          - "set -e"
+          - "npm t"
+        requirements:
+          - "os"

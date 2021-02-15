@@ -1,20 +1,25 @@
 const jestConfig = {
-  collectCoverage: true,
-  coverageReporters: [
-    'lcov',
-    'text'
-  ],
-  collectCoverageFrom: [
-    'src/**/*.js'
-  ],
-  coverageThreshold: {
-    global: {
-      branches: 88,
-      functions: 98,
-      lines: 97,
-      statements: 97
+    moduleFileExtensions: [
+      "js",
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    moduleNameMapper: {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    testMatch: [
+      "**/*.test.js"
+    ],
+    coverageThreshold: {
+      global: {
+        branches: 75,
+        functions: 75,
+        lines: 75,
+        statements: 75
+      }
     }
   }
-}
-
-module.exports = jestConfig
+  
+  module.exports = jestConfig

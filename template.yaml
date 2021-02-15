@@ -1,14 +1,15 @@
 apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
-  name: nodejs-lambda-template
-  title:  Nodejs Lambda Function Template
-  description: Create a nodejs hello world lambda function using this template
+  name: nodejs-microservice-template
+  title:  Nodejs Microservice Template
+  description: Create a nodejs microservice starter code using this template
+   || Express Js  || Docker || Git Hooks  
+   || Jest for Unit Test || ESLint || Sonar Qube Config || JetPack Config 
   tags:
     - experimental
     - nodejs
-    - serverless
-    - aws-lambda
+    - microservice
 spec:
   owner: Stockholm@team.telstra.com
   templater: cookiecutter
@@ -35,6 +36,7 @@ spec:
         title: Organization Details
         type: object
         properties:
+          
           business_unit:
             title: Business Unit
             type: string
@@ -71,54 +73,26 @@ spec:
                 title: Request to Resolve
             description: Business Domain groups a collection of systems that shares same terminology, domain-model, business-purpose, etc
 
-          team_name:
-            title: Team Name
-            type: string
-            description: Enter Your Team Name
-            default: Stockholm
-
         required:
         - business_unit
         - domain
-        - team_name
 
-
-      lambda:
-        title: Lambda Function Inputs
-        type: object
-        properties:
-          lambda_function_name:
-            title: Function Name
-            type: string
-            description: Enter a Name for your Lambda Function
-            default: lambda1
-          
-          runtime:
-            title: Runtime
-            type: string
-            description: Choose runtime for your lambda function 
-            enum:
-              - nodejs12
-              - nodejs10
-            default: nodejs12      
-        required:
-        - lambda_function_name
-        - runtime
 
       bamboo:
         title: Bamboo Specs
         type: object
         properties:
+
           project_key:
             title: Bamboo Project Key 
             type: string
             description: Bamboo project key (try use your existing project e.g. STOC)
-            default: STOC
+
           bamboo_plan_key:
             title: Bamboo Build Plan Key
             type: string
             description: Bamboo build plan key (e.g. MYSERVICEV2)
-            default: "bamboo_plan_key"
+
         required:
         - project_key
         - bamboo_plan_key

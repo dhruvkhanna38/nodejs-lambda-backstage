@@ -1,0 +1,65 @@
+survey:
+  ApplicationAccessibleOverInternet:
+    answer: Private/EDN
+    profile: NA
+  ApplicationDescription:
+    answer: {{cookiecutter.description}}
+    profile: NA
+  ApplicationName:
+    answer: {{cookiecutter.component_id}}
+    profile: NA
+  BAU:
+    answer: {{cookiecutter.organization.business_unit}}
+    profile: NA
+  BusinessCritical:
+    answer: True
+    profile: NA
+  BusinessRiskConsequence:
+    answer: Major
+    profile: STANDARD
+  ClairScanner:
+    answer: False
+    profile: NA
+  CoverityScanner:
+    answer: True
+    profile: NA
+  DoesPIA:
+    answer: False
+    profile: NA
+  HawkeyeScanner:
+    answer: True
+    profile: NA
+  InformationClassification:
+    answer: Restricted
+    profile: NA
+  LegacySystems:
+    answer: False
+    profile: NA
+  ProjectName:
+    answer: {{cookiecutter.component_id}}
+    profile: NA
+  SonarQubeScanner:
+    answer: True
+    profile: NA
+  SourceClear:
+    answer: False
+    profile: NA
+  TargetPlatform:
+    answer: AMP Naked
+    profile: NA
+  TeamGroupEmail:
+    answer: Stockholm@team.telstra.com
+    profile: NA
+  TeamLeadEmail:
+    answer: sharad.pattanshetti@team.telstra.com
+    profile: NA
+  TeamName:
+    answer: {{cookiecutter.owner}}
+    profile: NA
+  TelstraRetailOrWholesaleUse:
+    answer: Both
+    profile: NA
+  UsesDockerImages:
+    answer: False
+    profile: NA
+version: v1.0
